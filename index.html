@@ -551,7 +551,8 @@ tr:last-child td{border-bottom:0}
           <div id="payTable"></div>
 
           <div class="footerhint">
-            Semana de lunes a domingo.
+            Semana de lunes a domingo (hora de Perú).
+            Cada lunes comienza una nueva semana en cero, sin borrar el historial.
             Sueldo mensual ÷ 30 × días equivalentes registrados.
             Completo = 1; medio turno = 0,5;
             descanso y permiso pagado = 1; falta = 0.
@@ -592,18 +593,14 @@ tr:last-child td{border-bottom:0}
             accept=".json,application/json" onchange="importFile(event)">
         </div>
 
-        <div class="pagehead">
-          <div>
-            <h1>Gestión de personal</h1>
-            <div class="muted">Agregar, editar o retirar trabajadores.</div>
+        <div class="panel">
+          <div class="panelhead">
+            <h2>Personal</h2>
+            <button class="primary" onclick="openStaffForm()">
+              Agregar trabajador
+            </button>
           </div>
 
-          <button class="primary" onclick="openStaffForm()">
-            + Agregar trabajador
-          </button>
-        </div>
-
-        <div class="panel">
           <div class="filters">
             <div class="field">
               <label for="staffStoreFilter">Tienda</label>
@@ -792,10 +789,28 @@ function connection(message){
 }
 
 function today(){
-  const d = new Date();
-  return d.getFullYear()+"-"+
-    String(d.getMonth()+1).padStart(2,"0")+"-"+
-    String(d.getDate()).padStart(2,"0");
+  const parts = new Intl.DateTimeFormat("en-US",{
+    timeZone:"America/Lima",
+    year:"numeric",
+    month:"2-digit",
+    day:"2-digit"
+  }).formatToParts(new Date());
+
+  const part = type=>parts.find(p=>p.type===type).value;
+  return part("year")+"-"+part("month")+"-"+part("day");
+}
+
+let currentCalendarWeek = weekStart(today());
+
+function checkWeeklyRollover(){
+  const nextWeek = weekStart(today());
+
+  if(nextWeek===currentCalendarWeek) return;
+
+  currentCalendarWeek = nextWeek;
+  $("payWeek").value = nextWeek;
+
+  if(session.role==="admin") renderDashboard();
 }
 
 function weekStart(value){
@@ -946,6 +961,8 @@ async function saveChange(change){
 }
 
 async function refresh(force=false){
+  checkWeeklyRollover();
+
   if(!session.role || busy || loading || document.hidden) return;
 
   if(
@@ -1167,7 +1184,8 @@ async function enterApp(event){
   });
 
   $("attendanceDate").value = today();
-  $("payWeek").value = weekStart(today());
+  currentCalendarWeek = weekStart(today());
+  $("payWeek").value = currentCalendarWeek;
 
   navigate(role==="admin" ? "dashboard" : "attendance");
 }
@@ -1192,6 +1210,7 @@ function logout(){
 
 /* NAVEGACIÓN */
 function navigate(view){
+  checkWeeklyRollover();
   if(!session.role) return;
 
   const views = ["attendance","dashboard","staff","reports"];
@@ -1290,7 +1309,10 @@ function renderAttendance(){
     }
 
     return title+table(
-      ["Trabajador","Cargo","Asistencia","Observación"],
+      [
+        "Trabajador","Cargo","Asistencia","Observación",
+        ...(session.role==="admin" ? ["Acciones"] : [])
+      ],
       workers.map(worker=>{
         const record = getRecord(worker.id,date);
         const id = safeId(worker.id);
@@ -1313,13 +1335,52 @@ function renderAttendance(){
             aria-label="Observación de ${esc(worker.first)}"
             value="${esc(record.comment)}"
             placeholder="Opcional"
-            onchange="setComment(decodeURIComponent('${id}'),this.value)">`
+            onchange="setComment(decodeURIComponent('${id}'),this.value)">`,
+          ...(session.role==="admin" ? [
+            Object.prototype.hasOwnProperty.call(
+              db.attendance,date+"|"+worker.id
+            )
+              ? `<button class="danger" type="button"
+                  onclick="deleteAttendance(decodeURIComponent('${id}'))">
+                  Eliminar asistencia
+                </button>`
+              : '<span class="small muted">Sin registro</span>'
+          ] : [])
         ];
       })
     );
   }).join("");
 
   renderRecentNotices();
+}
+
+async function deleteAttendance(id){
+  if(session.role!=="admin" || !canEditAttendance(id)) return;
+
+  if(busy || loading){
+    return toast("Espera a que termine la sincronización.");
+  }
+
+  const date = $("attendanceDate").value || today();
+  const key = date+"|"+id;
+
+  if(!Object.prototype.hasOwnProperty.call(db.attendance,key)) return;
+
+  const worker = db.staff.find(s=>s.id===id);
+
+  if(!confirm(
+    "¿Eliminar la asistencia de "+worker.first+" "+worker.last+
+    " del "+date+
+    "? Se eliminará también su observación y se recalculará el pago semanal."
+  )) return;
+
+  await saveChange(()=>{
+    delete db.attendance[key];
+  });
+
+  renderAttendance();
+  renderDashboard();
+  renderReports();
 }
 
 async function updateAttendance(id,changes){
@@ -1810,7 +1871,17 @@ $("loginPassword").addEventListener("keyup",event=>{
   );
 });
 
+setInterval(checkWeeklyRollover,1000);
+
+document.addEventListener("visibilitychange",()=>{
+  if(!document.hidden){
+    checkWeeklyRollover();
+    refresh();
+  }
+});
+
 setInterval(()=>refresh(),15000);
+
 window.addEventListener("focus",()=>refresh());
 
 chooseRole("encargado");

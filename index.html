@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ofertón Dorado | Asistencia y Pagos</title>
+<title>Asistencia y Pagos</title>
 
 <style>
 :root{
@@ -61,21 +61,8 @@ button:focus-visible{outline:3px solid #dcb465;outline-offset:3px}
   font-size:11px;
   letter-spacing:1.5px;
 }
-.brand-art{
-  margin:28px 0 34px;
-  padding:18px;
-  background:white;
-  border-radius:20px;
-  box-shadow:0 16px 50px #0003;
-}
-.brand-art img{display:block;width:100%;height:auto;object-fit:contain}
-.logo-fallback{
-  text-align:center;padding:24px;color:#17191f;
-  font-size:30px;font-weight:800;
-}
-.logo-fallback span{color:#a56b06}
 .login-intro h1{
-  margin:0 0 20px;
+  margin:28px 0 20px;
   font-size:clamp(34px,3.4vw,54px);
   line-height:1.08;
   letter-spacing:-1.8px;
@@ -83,43 +70,64 @@ button:focus-visible{outline:3px solid #dcb465;outline-offset:3px}
 .login-intro h1 span{color:var(--gold)}
 .login-intro p{max-width:490px;color:#c5c7cf;font-size:17px}
 .login-features{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:10px;margin:28px 0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:28px 0;
 }
 .login-features div{
-  padding:12px;font-size:12px;
-  background:#ffffff05;border:1px solid #ffffff12;
+  padding:12px;
+  font-size:12px;
+  background:#ffffff05;
+  border:1px solid #ffffff12;
   border-radius:12px;
 }
 .login-intro small{color:#9b9da7;font-size:11px}
 .loginbox{
-  width:100%;max-width:480px;margin:auto;padding:36px;
-  background:white;border-radius:24px;
+  width:100%;
+  max-width:480px;
+  margin:auto;
+  padding:36px;
+  background:white;
+  border-radius:24px;
   box-shadow:0 24px 70px #0004;
 }
 .brand{font-size:18px;font-weight:800;line-height:1.25}
 .brand small{
-  display:block;font-size:11px;font-weight:500;
-  margin-top:8px;color:#b9c8e0;
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  margin-top:8px;
+  color:#b9c8e0;
 }
 .loginbox .brand{font-size:20px}
 .loginbox .brand small{color:var(--muted)}
 .loginbox h2{font-size:28px;margin:26px 0 6px}
 .loginbox .field{margin:15px 0}
 .role-options{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:10px;margin:22px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:22px 0;
 }
 .role-option{
-  padding:15px 12px;text-align:left;background:#f8faff;
-  border:1px solid #dce4ef;color:#53637b;
+  padding:15px 12px;
+  text-align:left;
+  background:#f8faff;
+  border:1px solid #dce4ef;
+  color:#53637b;
 }
 .role-option strong{display:block;font-size:14px}
 .role-option span{
-  display:block;font-size:11px;font-weight:400;margin-top:5px;
+  display:block;
+  font-size:11px;
+  font-weight:400;
+  margin-top:5px;
 }
 .role-option.selected{
-  background:#fff8ec;border-color:#bd8c32;color:#744e0e;
+  background:#fff8ec;
+  border-color:#bd8c32;
+  color:#744e0e;
   box-shadow:0 0 0 1px #bd8c32;
 }
 .password-wrap{display:flex;gap:8px}
@@ -127,54 +135,89 @@ button:focus-visible{outline:3px solid #dcb465;outline-offset:3px}
 .password-wrap button{font-size:12px}
 .login-submit{width:100%;padding:14px;margin-top:12px}
 .login-error{
-  padding:10px;background:#fff0f0;color:#991b1b;
-  border-radius:8px;font-size:13px;
+  padding:10px;
+  background:#fff0f0;
+  color:#991b1b;
+  border-radius:8px;
+  font-size:13px;
 }
 .loginbox .footerhint{
-  margin-top:22px;padding-top:16px;
-  border-top:1px solid #edf0f5;font-size:11px;
+  margin-top:22px;
+  padding-top:16px;
+  border-top:1px solid #edf0f5;
+  font-size:11px;
 }
-
-.shell{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+.shell{
+  display:grid;
+  grid-template-columns:245px 1fr;
+  min-height:100vh;
+}
 .sidebar{
   padding:24px 16px;
   background:linear-gradient(180deg,#17191f,#25262e);
   color:white;
 }
 .navlabel{
-  margin:26px 10px 8px;font-size:11px;color:#9eb0cc;
-  text-transform:uppercase;letter-spacing:1px;
+  margin:26px 10px 8px;
+  font-size:11px;
+  color:#9eb0cc;
+  text-transform:uppercase;
+  letter-spacing:1px;
 }
 .navbtn{
-  display:block;width:100%;margin:4px 0;
-  text-align:left;background:transparent;color:#d7e2f4;
+  display:block;
+  width:100%;
+  margin:4px 0;
+  text-align:left;
+  background:transparent;
+  color:#d7e2f4;
 }
 .navbtn.active,.navbtn:hover{background:#ffffff12;color:var(--gold)}
 .sidebar-note{
-  margin-top:32px;padding:12px;border:1px solid #ffffff20;
-  border-radius:12px;font-size:12px;color:#bac8dc;
+  margin-top:32px;
+  padding:12px;
+  border:1px solid #ffffff20;
+  border-radius:12px;
+  font-size:12px;
+  color:#bac8dc;
 }
 .main{min-width:0}
 .topbar{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:12px;padding:16px 28px;background:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:16px 28px;
+  background:white;
   border-bottom:1px solid var(--line);
 }
 .topbar .sub{font-size:12px;color:var(--muted)}
-.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
 .maincontent{padding:26px;max-width:1450px;margin:auto}
 .pagehead{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  gap:16px;margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:20px;
 }
 .pagehead h1{margin:0 0 5px;font-size:26px;letter-spacing:-.5px}
 .cards{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:14px;margin-bottom:20px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-bottom:20px;
 }
 .card,.panel{
-  padding:18px;background:white;
-  border:1px solid var(--line);border-radius:16px;
+  padding:18px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
 }
 .metric-label{font-size:13px;color:var(--muted)}
 .metric{font-size:27px;font-weight:800;margin-top:7px}
@@ -187,19 +230,29 @@ button:focus-visible{outline:3px solid #dcb465;outline-offset:3px}
 .card.yellow .metric{color:#854d0e}
 .panel{margin-bottom:18px}
 .panelhead{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:12px;margin-bottom:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
 }
 .panel h2{margin:0;font-size:17px}
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
 .field{
-  display:flex;flex-direction:column;gap:5px;
-  min-width:130px;flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:130px;
+  flex:1;
 }
 .field label{font-size:12px;font-weight:700;color:#59667c}
 input,select{
-  padding:10px;border:1px solid #d6deea;border-radius:9px;
-  background:white;color:var(--ink);min-width:0;
+  padding:10px;
+  border:1px solid #d6deea;
+  border-radius:9px;
+  background:white;
+  color:var(--ink);
+  min-width:0;
 }
 input:focus,select:focus{outline:2px solid #efd6a6;border-color:#b98730}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -207,12 +260,16 @@ input:focus,select:focus{outline:2px solid #efd6a6;border-color:#b98730}
 .tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
 table{width:100%;min-width:720px;border-collapse:collapse;background:white}
 th,td{
-  padding:12px 13px;text-align:left;
-  border-bottom:1px solid #edf0f5;white-space:nowrap;
+  padding:12px 13px;
+  text-align:left;
+  border-bottom:1px solid #edf0f5;
+  white-space:nowrap;
 }
 th{
-  background:#f8faff;color:#59667c;
-  font-size:12px;text-transform:uppercase;
+  background:#f8faff;
+  color:#59667c;
+  font-size:12px;
+  text-transform:uppercase;
 }
 tr:last-child td{border-bottom:0}
 .rowactions,.statusbuttons{display:flex;gap:6px;flex-wrap:wrap}
@@ -220,40 +277,69 @@ tr:last-child td{border-bottom:0}
 .statusbuttons button{background:#f0f4fa;color:#34425b}
 .statusbuttons button.chosen[data-status="full"],
 .statusbuttons button.chosen[data-status="half"]{
-  background:#dcfce7;color:#166534;box-shadow:inset 0 0 0 1px #86efac;
+  background:#dcfce7;
+  color:#166534;
+  box-shadow:inset 0 0 0 1px #86efac;
 }
 .statusbuttons button.chosen[data-status="absent"]{
-  background:#fee2e2;color:#991b1b;box-shadow:inset 0 0 0 1px #fca5a5;
+  background:#fee2e2;
+  color:#991b1b;
+  box-shadow:inset 0 0 0 1px #fca5a5;
 }
 .statusbuttons button.chosen[data-status="rest"],
 .statusbuttons button.chosen[data-status="paidleave"]{
-  background:#fef3c7;color:#854d0e;box-shadow:inset 0 0 0 1px #fcd34d;
+  background:#fef3c7;
+  color:#854d0e;
+  box-shadow:inset 0 0 0 1px #fcd34d;
 }
 .pill{
-  display:inline-block;padding:4px 8px;border-radius:999px;
-  font-size:11px;font-weight:750;background:#eef2f7;color:#526078;
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:750;
+  background:#eef2f7;
+  color:#526078;
 }
 .pill.ok,.count-green{background:#dcfce7;color:#166534}
 .pill.no,.count-red{background:#fee2e2;color:#991b1b}
 .pill.rest,.pill.pending,.count-yellow{background:#fef3c7;color:#854d0e}
 .count-green,.count-red,.count-yellow{
-  display:inline-block;min-width:36px;padding:6px 10px;
-  border-radius:9px;font-weight:800;text-align:center;
+  display:inline-block;
+  min-width:36px;
+  padding:6px 10px;
+  border-radius:9px;
+  font-weight:800;
+  text-align:center;
 }
 .empty{text-align:center;color:var(--muted);padding:24px}
 .notice{
-  padding:12px 14px;margin-bottom:16px;background:#fff8ec;
-  border:1px solid #eed9ae;border-radius:12px;
-  color:#744e0e;font-size:13px;
+  padding:12px 14px;
+  margin-bottom:16px;
+  background:#fff8ec;
+  border:1px solid #eed9ae;
+  border-radius:12px;
+  color:#744e0e;
+  font-size:13px;
 }
-.footerhint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+.footerhint{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:10px;
+  line-height:1.6;
+}
 .toast{
-  position:fixed;right:20px;bottom:20px;
-  max-width:calc(100vw - 40px);padding:13px 18px;
-  background:#152744;color:white;border-radius:12px;
-  box-shadow:0 8px 28px #0002;z-index:20;
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  max-width:calc(100vw - 40px);
+  padding:13px 18px;
+  background:#152744;
+  color:white;
+  border-radius:12px;
+  box-shadow:0 8px 28px #0002;
+  z-index:20;
 }
-
 @media(max-width:1000px){
   .login-layout{gap:28px;padding:32px}
   .login-features{grid-template-columns:1fr}
@@ -262,13 +348,20 @@ tr:last-child td{border-bottom:0}
 @media(max-width:900px){
   .shell{grid-template-columns:1fr}
   .sidebar{
-    display:flex;align-items:center;gap:10px;
-    padding:14px;overflow:auto;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px;
+    overflow:auto;
   }
   .sidebar .brand{min-width:145px;margin:0;font-size:15px}
   .navlabel,.sidebar-note{display:none}
   .navbtn{
-    width:auto;white-space:nowrap;flex-shrink:0;margin:0;padding:9px;
+    width:auto;
+    white-space:nowrap;
+    flex-shrink:0;
+    margin:0;
+    padding:9px;
   }
   .topbar{padding:13px 17px}
   .maincontent{padding:17px}
@@ -277,12 +370,13 @@ tr:last-child td{border-bottom:0}
 }
 @media(max-width:800px){
   .login-layout{
-    grid-template-columns:1fr;gap:24px;padding:24px 18px 32px;
+    grid-template-columns:1fr;
+    gap:24px;
+    padding:24px 18px 32px;
   }
   .login-intro{max-width:480px}
   .login-tag{font-size:10px}
-  .brand-art{margin:20px 0;padding:12px}
-  .login-intro h1{font-size:32px;margin:0 0 10px}
+  .login-intro h1{font-size:32px;margin:20px 0 10px}
   .login-intro p{font-size:14px;margin:0}
   .login-features,.login-intro small{display:none}
   .loginbox{padding:26px}
@@ -300,26 +394,41 @@ tr:last-child td{border-bottom:0}
   .two{grid-template-columns:1fr}
   .tablewrap{border:0;overflow:visible}
   .tablewrap table{
-    display:block;min-width:0;width:100%;background:transparent;
+    display:block;
+    min-width:0;
+    width:100%;
+    background:transparent;
   }
   .tablewrap thead{
-    position:absolute;width:1px;height:1px;
-    overflow:hidden;clip-path:inset(50%);
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip-path:inset(50%);
   }
   .tablewrap tbody{display:grid;gap:12px}
   .tablewrap tr{
-    display:block;padding:10px 12px;background:white;
-    border:1px solid var(--line);border-radius:12px;
+    display:block;
+    padding:10px 12px;
+    background:white;
+    border:1px solid var(--line);
+    border-radius:12px;
   }
   .tablewrap td{
     display:grid;
     grid-template-columns:minmax(85px,.7fr) minmax(0,1fr);
-    gap:12px;align-items:start;white-space:normal;
-    padding:9px 0;overflow-wrap:anywhere;
+    gap:12px;
+    align-items:start;
+    white-space:normal;
+    padding:9px 0;
+    overflow-wrap:anywhere;
   }
   .tablewrap td::before{
     content:attr(data-label);
-    font-size:12px;font-weight:700;color:#59667c;padding-top:3px;
+    font-size:12px;
+    font-weight:700;
+    color:#59667c;
+    padding-top:3px;
   }
   .tablewrap td>*{min-width:0}
   .tablewrap td input{width:100%;min-width:0!important}
@@ -328,20 +437,9 @@ tr:last-child td{border-bottom:0}
 </head>
 
 <body>
-
-<!-- LOGIN -->
 <div id="login" class="login-layout">
   <div class="login-intro">
-    <span class="login-tag">OFERTÓN DORADO · GESTIÓN DE PERSONAL</span>
-
-    <div class="brand-art">
-      <img src="logo-oferton.png" alt="Ofertón Dorado"
-        onerror="this.classList.add('hidden');document.getElementById('logoFallback').classList.remove('hidden')">
-      <div id="logoFallback" class="logo-fallback hidden">
-        OFERTÓN <span>Dorado</span>
-      </div>
-    </div>
-
+    <span class="login-tag">GESTIÓN DE PERSONAL</span>
     <h1>Tu equipo.<br><span>Todo bajo control.</span></h1>
     <p>Administra la asistencia y los pagos semanales de todas tus tiendas desde un solo panel.</p>
 
@@ -356,7 +454,7 @@ tr:last-child td{border-bottom:0}
 
   <div class="loginbox">
     <div class="brand">
-      Bienvenido a Ofertón Dorado
+      Bienvenido
       <small>CONTROL DE ASISTENCIA Y PAGOS</small>
     </div>
 
@@ -422,11 +520,10 @@ tr:last-child td{border-bottom:0}
   </div>
 </div>
 
-<!-- PANEL -->
 <div id="app" class="shell hidden">
   <aside class="sidebar">
     <div class="brand">
-      OFERTÓN DORADO
+      CONTROL DE PERSONAL
       <small>ASISTENCIA Y PAGOS</small>
     </div>
 
@@ -467,13 +564,16 @@ tr:last-child td{border-bottom:0}
 
     <div class="maincontent">
 
-      <!-- ASISTENCIA -->
       <section id="view-attendance">
         <div class="pagehead">
           <div>
             <h1>Asistencia diaria</h1>
-            <div class="muted">Marca el estado de cada trabajador.</div>
+            <div class="muted">
+              Primero marca 12 h o 6 h. Luego ingresa los minutos
+              y pulsa Aplicar tardanza.
+            </div>
           </div>
+
           <div class="field" style="max-width:190px">
             <label for="attendanceDate">Fecha del reporte</label>
             <input type="date" id="attendanceDate"
@@ -500,8 +600,8 @@ tr:last-child td{border-bottom:0}
 
           <div class="footerhint">
             Verde: asistencia. Rojo: falta.
-            Amarillo: descanso o permiso pagado.
-            Cada cambio se guarda en Google.
+            Amarillo: descanso o permiso.
+            La tardanza se aplica después de seleccionar el turno.
           </div>
         </div>
 
@@ -514,7 +614,6 @@ tr:last-child td{border-bottom:0}
         </div>
       </section>
 
-      <!-- PAGOS -->
       <section id="view-dashboard" class="hidden">
         <div class="pagehead">
           <div>
@@ -551,39 +650,42 @@ tr:last-child td{border-bottom:0}
           <div id="payTable"></div>
 
           <div class="footerhint">
-            Semana de lunes a domingo (hora de Perú).
-            Cada lunes comienza una nueva semana en cero, sin borrar el historial.
-            Sueldo mensual ÷ 30 × días equivalentes registrados.
-            Completo = 1; medio turno = 0,5;
-            descanso y permiso pagado = 1; falta = 0.
-            El panel calcula importes; no ejecuta transferencias.
+            Semana de lunes a domingo, hora de Perú.
+            Cada lunes comienza una nueva semana sin borrar el historial.
+            Turno completo = 1 día; medio turno = 0,5 días.
+            Descansos, faltas y permisos no suman pago.
+            Las tardanzas se descuentan por minuto según el sueldo registrado.
+            La jornada completa considera 11 horas efectivas y 1 hora de almuerzo.
+            El pago del turno de 6 horas equivale a medio día.
           </div>
         </div>
       </section>
 
-      <!-- PERSONAL -->
       <section id="view-staff" class="hidden">
         <div class="panel">
           <h2>Datos compartidos en Google</h2>
 
           <p class="small muted">
             Para iniciar con Google vacío, importa tus datos anteriores
-            o carga el personal original. No se reemplaza una base
-            que ya tenga registros.
+            o carga el personal original.
+            No se reemplaza una base que ya tenga registros.
           </p>
 
           <div class="rowactions">
             <button class="secondary" onclick="importLocal()">
               Importar desde este navegador
             </button>
+
             <button class="secondary"
               onclick="document.getElementById('backupFile').click()">
               Importar respaldo JSON
             </button>
+
             <button class="secondary"
               onclick="importData({staff:seed,attendance:{},notices:[]},'el personal original')">
               Cargar personal original
             </button>
+
             <button class="secondary" onclick="exportBackup()">
               Descargar respaldo
             </button>
@@ -631,32 +733,39 @@ tr:last-child td{border-bottom:0}
                 <label for="staffStore">Tienda *</label>
                 <select id="staffStore" required></select>
               </div>
+
               <div class="field">
                 <label for="staffCode">Código</label>
                 <input id="staffCode" placeholder="Automático">
               </div>
+
               <div class="field">
                 <label for="staffFirst">Nombres *</label>
                 <input id="staffFirst" required>
               </div>
+
               <div class="field">
                 <label for="staffLast">Apellidos *</label>
                 <input id="staffLast" required>
               </div>
+
               <div class="field">
                 <label for="staffDni">DNI</label>
                 <input id="staffDni" inputmode="numeric" maxlength="8"
                   pattern="[0-9]{8}" placeholder="8 dígitos">
               </div>
+
               <div class="field">
                 <label for="staffRole">Cargo</label>
                 <input id="staffRole">
               </div>
+
               <div class="field">
                 <label for="staffSalary">Sueldo mensual (S/) *</label>
                 <input id="staffSalary" type="number" min="0" step="0.01"
                   value="1230" required>
               </div>
+
               <div class="field">
                 <label>Frecuencia de pago</label>
                 <input value="Semanal" readonly>
@@ -668,7 +777,6 @@ tr:last-child td{border-bottom:0}
         </div>
       </section>
 
-      <!-- REPORTES -->
       <section id="view-reports" class="hidden">
         <div class="pagehead">
           <div>
@@ -683,15 +791,18 @@ tr:last-child td{border-bottom:0}
               <label for="reportFrom">Desde</label>
               <input type="date" id="reportFrom" onchange="renderReports()">
             </div>
+
             <div class="field">
               <label for="reportTo">Hasta</label>
               <input type="date" id="reportTo" onchange="renderReports()">
             </div>
+
             <div class="field">
               <label for="reportStore">Tienda</label>
               <select id="reportStore" onchange="renderReports()"></select>
             </div>
           </div>
+
           <div id="reportTable"></div>
         </div>
       </section>
@@ -703,10 +814,16 @@ tr:last-child td{border-bottom:0}
 <div id="toast" class="toast hidden" role="status"></div>
 
 <script>
-/* CONEXIÓN CON TU GOOGLE APPS SCRIPT */
+/* CONEXIÓN CON GOOGLE */
 const GOOGLE_URL =
   "https://script.google.com/macros/s/AKfycbzoUDHZyYt4FzkD4ProR9QEF6ZrStN7TvV3dKIlK8SyboZIYqvVleuFaqm57cEm-vcvUA/exec";
 
+/*
+  Las referencias internas se mantienen para reconocer
+  los registros ya guardados en Google.
+
+  Los nombres visibles se establecen en displayText().
+*/
 const STORES = [
   "LURIN GRANDE",
   "VIRREYNA - LURIN",
@@ -717,124 +834,196 @@ const STORES = [
 ];
 
 const KEY = "lurin_attendance_app_v1";
-const $ = id => document.getElementById(id);
+const $ = id=>document.getElementById(id);
 
+/* Solo se importa si Google está vacío. */
 const seed = [
   {
-    id:"lg1",store:STORES[0],code:"T01",dni:"62727353",
-    first:"SULYT SAHORI",last:"CORAL HIDALGO",job:"PASILLERA",
-    salary:1230,payType:"Semanal",active:true
+    id:"lg1",
+    store:STORES[0],
+    code:"T01",
+    dni:"62727353",
+    first:"SULYT SAHORI",
+    last:"CORAL HIDALGO",
+    job:"PASILLERA",
+    salary:1230,
+    payType:"Semanal",
+    active:true
   },
   {
-    id:"lg2",store:STORES[0],code:"T02",dni:"76937474",
-    first:"FREDY TEDY",last:"AREVALO SALVINO",job:"PASILLERO",
-    salary:1230,payType:"Semanal",active:true
+    id:"lg2",
+    store:STORES[0],
+    code:"T02",
+    dni:"76937474",
+    first:"FREDY TEDY",
+    last:"AREVALO SALVINO",
+    job:"PASILLERO",
+    salary:1230,
+    payType:"Semanal",
+    active:true
   },
   {
-    id:"lg3",store:STORES[0],code:"T03",dni:"73058845",
-    first:"CESAR ALBERTO",last:"NICACIO OCHOA",job:"PASILLERO",
-    salary:1230,payType:"Semanal",active:true
+    id:"lg3",
+    store:STORES[0],
+    code:"T03",
+    dni:"73058845",
+    first:"CESAR ALBERTO",
+    last:"NICACIO OCHOA",
+    job:"PASILLERO",
+    salary:1230,
+    payType:"Semanal",
+    active:true
   },
   {
-    id:"lg4",store:STORES[0],code:"T04",dni:"76778647",
-    first:"PEPE",last:"NORIEGA GARCIA",job:"ENCARGADO",
-    salary:1230,payType:"Semanal",active:true
+    id:"lg4",
+    store:STORES[0],
+    code:"T04",
+    dni:"76778647",
+    first:"PEPE",
+    last:"NORIEGA GARCIA",
+    job:"ENCARGADO",
+    salary:1230,
+    payType:"Semanal",
+    active:true
   },
   {
-    id:"vr1",store:STORES[1],code:"T01",dni:"74512576",
-    first:"RUBI ESMERALDA",last:"MACAZANA ARIMUYA",job:"ENCARGADA",
-    salary:1230,payType:"Semanal",active:true
+    id:"vr1",
+    store:STORES[1],
+    code:"T01",
+    dni:"74512576",
+    first:"RUBI ESMERALDA",
+    last:"MACAZANA ARIMUYA",
+    job:"ENCARGADA",
+    salary:1230,
+    payType:"Semanal",
+    active:true
   },
   {
-    id:"vr2",store:STORES[1],code:"T02",dni:"61396369",
-    first:"KARLA DIANISA",last:"PARANA DA CRUZ",job:"CAJERA",
-    salary:1230,payType:"Semanal",active:true
+    id:"vr2",
+    store:STORES[1],
+    code:"T02",
+    dni:"61396369",
+    first:"KARLA DIANISA",
+    last:"PARANA DA CRUZ",
+    job:"CAJERA",
+    salary:1230,
+    payType:"Semanal",
+    active:true
   },
   {
-    id:"vr3",store:STORES[1],code:"T03",dni:"73846218",
-    first:"CHRISBEL",last:"MACAZANA ARIMUYA",job:"PASILLERA",
-    salary:1230,payType:"Semanal",active:true
+    id:"vr3",
+    store:STORES[1],
+    code:"T03",
+    dni:"73846218",
+    first:"CHRISBEL",
+    last:"MACAZANA ARIMUYA",
+    job:"PASILLERA",
+    salary:1230,
+    payType:"Semanal",
+    active:true
   }
 ];
 
-let db = {staff:[],attendance:{},notices:[]};
-let revision = 0;
-let session = {role:"",store:"",name:""};
-let authToken = "";
-let busy = false;
-let loading = false;
-let viewEpoch = 0;
+let db={staff:[],attendance:{},notices:[]};
+let revision=0;
+let session={role:"",store:"",name:""};
+let authToken="";
+let busy=false;
+let loading=false;
+let viewEpoch=0;
 let toastTimer;
 
-const statuses = [
+const statuses=[
   ["Completo (12 h)","full"],
   ["Medio turno (6 h)","half"],
   ["Falta","absent"],
-  ["Descanso pagado","rest"],
-  ["Permiso pagado","paidleave"]
+  ["Descanso","rest"],
+  ["Permiso (sin pago)","paidleave"]
 ];
 
 /* UTILIDADES */
 function toast(message){
   clearTimeout(toastTimer);
-  $("toast").textContent = message;
+  $("toast").textContent=message;
   $("toast").classList.remove("hidden");
-  toastTimer = setTimeout(
-    () => $("toast").classList.add("hidden"), 6000
+
+  toastTimer=setTimeout(
+    ()=>$("toast").classList.add("hidden"),
+    6000
   );
 }
 
 function connection(message){
-  $("syncState").textContent = message;
+  $("syncState").textContent=message;
 }
 
 function today(){
-  const parts = new Intl.DateTimeFormat("en-US",{
+  const parts=new Intl.DateTimeFormat("en-US",{
     timeZone:"America/Lima",
     year:"numeric",
     month:"2-digit",
     day:"2-digit"
   }).formatToParts(new Date());
 
-  const part = type=>parts.find(p=>p.type===type).value;
+  const part=type=>parts.find(p=>p.type===type).value;
+
   return part("year")+"-"+part("month")+"-"+part("day");
 }
 
-let currentCalendarWeek = weekStart(today());
-
-function checkWeeklyRollover(){
-  const nextWeek = weekStart(today());
-
-  if(nextWeek===currentCalendarWeek) return;
-
-  currentCalendarWeek = nextWeek;
-  $("payWeek").value = nextWeek;
-
-  if(session.role==="admin") renderDashboard();
-}
-
 function weekStart(value){
-  const d = new Date(value+"T12:00:00Z");
+  const d=new Date(value+"T12:00:00Z");
   d.setUTCDate(d.getUTCDate()-(d.getUTCDay()+6)%7);
   return d.toISOString().slice(0,10);
 }
 
 function weekEnd(value){
-  const d = new Date(weekStart(value)+"T12:00:00Z");
+  const d=new Date(weekStart(value)+"T12:00:00Z");
   d.setUTCDate(d.getUTCDate()+6);
   return d.toISOString().slice(0,10);
 }
 
+let currentCalendarWeek=weekStart(today());
+
+function checkWeeklyRollover(){
+  const nextWeek=weekStart(today());
+
+  if(nextWeek===currentCalendarWeek) return;
+
+  currentCalendarWeek=nextWeek;
+  $("payWeek").value=nextWeek;
+
+  if(session.role==="admin"){
+    renderDashboard();
+  }
+}
+
 function money(value){
   return new Intl.NumberFormat("es-PE",{
-    style:"currency",currency:"PEN"
+    style:"currency",
+    currency:"PEN"
   }).format(value || 0);
 }
 
+/* TERCERA TIENDA: OFERTÓN LURÍN */
+function displayText(value){
+  const text=String(value ?? "").trim();
+
+  if(text===STORES[2]){
+    return "OFERTÓN LURÍN";
+  }
+
+  return text
+    .replace(/OFERT[ÓO]N DORADO\s*/gi,"")
+    .trim();
+}
+
 function esc(value){
-  return String(value ?? "").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#39;"
+  return displayText(value).replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
   }[c]));
 }
 
@@ -844,17 +1033,23 @@ function safeId(id){
 
 function table(headers,rows){
   return `<div class="tablewrap"><table>
-    <thead><tr>
-      ${headers.map(h=>`<th scope="col">${esc(h)}</th>`).join("")}
-    </tr></thead>
+    <thead>
+      <tr>
+        ${headers.map(h=>`
+          <th scope="col">${esc(h)}</th>
+        `).join("")}
+      </tr>
+    </thead>
     <tbody>
-      ${rows.map(row=>`<tr>
-        ${row.map((cell,index)=>
-          `<td data-label="${esc(headers[index])}">
-            <div>${cell}</div>
-          </td>`
-        ).join("")}
-      </tr>`).join("")}
+      ${rows.map(row=>`
+        <tr>
+          ${row.map((cell,index)=>`
+            <td data-label="${esc(headers[index])}">
+              <div>${cell}</div>
+            </td>
+          `).join("")}
+        </tr>
+      `).join("")}
     </tbody>
   </table></div>`;
 }
@@ -876,9 +1071,11 @@ async function api(action,body={}){
   let response;
 
   try{
-    response = await fetch(GOOGLE_URL,{
+    response=await fetch(GOOGLE_URL,{
       method:"POST",
-      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      headers:{
+        "Content-Type":"text/plain;charset=utf-8"
+      },
       redirect:"follow",
       body:JSON.stringify({
         ...body,
@@ -895,7 +1092,7 @@ async function api(action,body={}){
   let result;
 
   try{
-    result = await response.json();
+    result=await response.json();
   }catch(error){
     throw new Error(
       "Google no devolvió datos válidos. Revisa la implementación de Apps Script."
@@ -903,7 +1100,9 @@ async function api(action,body={}){
   }
 
   if(!response.ok || !result.ok){
-    throw new Error(result.error || "No se pudo completar la operación.");
+    throw new Error(
+      result.error || "No se pudo completar la operación."
+    );
   }
 
   return result;
@@ -911,26 +1110,32 @@ async function api(action,body={}){
 
 async function saveChange(change){
   if(busy || loading){
-    toast("Espera a que termine la sincronización y repite el cambio.");
+    toast(
+      "Espera a que termine la sincronización y repite el cambio."
+    );
     return false;
   }
 
-  busy = true;
-  const previous = JSON.stringify(db);
-  const epoch = viewEpoch;
+  busy=true;
+
+  const previous=JSON.stringify(db);
+  const epoch=viewEpoch;
 
   connection("Guardando en Google…");
-  document.querySelectorAll("button").forEach(b=>b.disabled=true);
+
+  document.querySelectorAll("button").forEach(b=>{
+    b.disabled=true;
+  });
 
   try{
     change();
 
-    const result = await api("save",{db,revision});
+    const result=await api("save",{db,revision});
 
     if(epoch!==viewEpoch) return false;
 
-    db = result.db;
-    revision = result.revision;
+    db=result.db;
+    revision=result.revision;
 
     connection(
       "Guardado en Google · "+
@@ -940,54 +1145,73 @@ async function saveChange(change){
     toast("Guardado en Google correctamente.");
     return true;
   }catch(error){
-    db = JSON.parse(previous);
+    db=JSON.parse(previous);
 
     connection("Cambio no confirmado");
 
     try{
-      const result = await api("data");
+      const result=await api("data");
+
       if(epoch===viewEpoch){
-        db = result.db;
-        revision = result.revision;
+        db=result.db;
+        revision=result.revision;
       }
     }catch(ignore){}
 
     toast("No se confirmó el guardado: "+error.message);
     return false;
   }finally{
-    busy = false;
-    document.querySelectorAll("button").forEach(b=>b.disabled=false);
+    busy=false;
+
+    document.querySelectorAll("button").forEach(b=>{
+      b.disabled=false;
+    });
   }
 }
 
 async function refresh(force=false){
   checkWeeklyRollover();
 
-  if(!session.role || busy || loading || document.hidden) return;
+  if(
+    !session.role ||
+    busy ||
+    loading ||
+    document.hidden
+  ){
+    return;
+  }
 
   if(
     !force &&
     document.activeElement.matches("input,select,textarea")
-  ) return;
+  ){
+    return;
+  }
 
-  loading = true;
-  const epoch = viewEpoch;
-  const previousRevision = revision;
+  loading=true;
+
+  const epoch=viewEpoch;
+  const previousRevision=revision;
 
   try{
-    const result = await api("data");
+    const result=await api("data");
 
     if(
       epoch!==viewEpoch ||
       busy ||
       revision!==previousRevision
-    ) return;
+    ){
+      return;
+    }
 
     if(result.revision!==revision){
-      db = result.db;
-      revision = result.revision;
+      db=result.db;
+      revision=result.revision;
 
-      const view = document.querySelector(".navbtn.active")?.dataset.view;
+      const view=document.querySelector(
+        ".navbtn.active"
+      )?.dataset.view;
+
       if(view) navigate(view);
     }
 
@@ -1000,11 +1224,11 @@ async function refresh(force=false){
       connection("Sin sincronización: "+error.message);
     }
   }finally{
-    loading = false;
+    loading=false;
   }
 }
 
-/* IMPORTACIÓN INICIAL Y RESPALDOS */
+/* RESPALDOS E IMPORTACIÓN */
 async function importData(data,label){
   if(session.role!=="admin") return;
 
@@ -1014,7 +1238,9 @@ async function importData(data,label){
     !data.attendance ||
     !Array.isArray(data.notices)
   ){
-    return toast("El respaldo no tiene el formato esperado.");
+    return toast(
+      "El respaldo no tiene el formato esperado."
+    );
   }
 
   if(
@@ -1027,10 +1253,14 @@ async function importData(data,label){
     );
   }
 
-  if(!confirm("¿Importar "+label+" a la base vacía de Google?")) return;
+  if(!confirm(
+    "¿Importar "+label+" a la base vacía de Google?"
+  )){
+    return;
+  }
 
   if(await saveChange(()=>{
-    db = JSON.parse(JSON.stringify(data));
+    db=JSON.parse(JSON.stringify(data));
   })){
     renderStaff();
     renderDashboard();
@@ -1040,7 +1270,7 @@ async function importData(data,label){
 
 function importLocal(){
   try{
-    const data = JSON.parse(localStorage.getItem(KEY));
+    const data=JSON.parse(localStorage.getItem(KEY));
 
     if(!data){
       return toast(
@@ -1048,7 +1278,9 @@ function importLocal(){
       );
     }
 
-    if(!data.notices) data.notices = [];
+    if(!data.notices){
+      data.notices=[];
+    }
 
     importData(data,"los datos de este navegador");
   }catch(error){
@@ -1057,29 +1289,44 @@ function importLocal(){
 }
 
 async function importFile(event){
-  const file = event.target.files[0];
+  const file=event.target.files[0];
+
   if(!file) return;
 
   try{
-    const data = JSON.parse(await file.text());
-    if(!data.notices) data.notices = [];
-    await importData(data,"el respaldo seleccionado");
+    const data=JSON.parse(await file.text());
+
+    if(!data.notices){
+      data.notices=[];
+    }
+
+    await importData(
+      data,
+      "el respaldo seleccionado"
+    );
   }catch(error){
     toast("No se pudo leer el respaldo JSON.");
   }finally{
-    event.target.value = "";
+    event.target.value="";
   }
 }
 
 function downloadFile(content,name,type){
-  const url = URL.createObjectURL(new Blob([content],{type}));
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = name;
+  const url=URL.createObjectURL(
+    new Blob([content],{type})
+  );
+
+  const link=document.createElement("a");
+  link.href=url;
+  link.download=name;
+
   document.body.appendChild(link);
   link.click();
   link.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
+
+  setTimeout(()=>{
+    URL.revokeObjectURL(url);
+  },1000);
 }
 
 function exportBackup(){
@@ -1087,80 +1334,109 @@ function exportBackup(){
 
   downloadFile(
     JSON.stringify(db,null,2),
-    "respaldo_oferton_"+today()+".json",
+    "respaldo_asistencia_"+today()+".json",
     "application/json"
   );
 }
 
 /* LOGIN */
 function resetPassword(){
-  $("loginPassword").value = "";
-  $("loginPassword").type = "password";
-  $("passwordToggle").textContent = "Mostrar";
-  $("passwordToggle").setAttribute("aria-pressed","false");
+  $("loginPassword").value="";
+  $("loginPassword").type="password";
+  $("passwordToggle").textContent="Mostrar";
+  $("passwordToggle").setAttribute(
+    "aria-pressed","false"
+  );
   $("capsWarning").classList.add("hidden");
 }
 
 function chooseRole(role){
-  if(!["admin","encargado"].includes(role)) return;
+  if(!["admin","encargado"].includes(role)){
+    return;
+  }
 
-  $("loginRole").value = role;
-  $("loginStore").disabled = role==="admin";
+  $("loginRole").value=role;
+  $("loginStore").disabled=role==="admin";
 
   ["admin","encargado"].forEach(profile=>{
-    const selected = profile===role;
-    $("role-"+profile).classList.toggle("selected",selected);
-    $("role-"+profile).setAttribute("aria-pressed",String(selected));
+    const selected=profile===role;
+
+    $("role-"+profile).classList.toggle(
+      "selected",selected
+    );
+
+    $("role-"+profile).setAttribute(
+      "aria-pressed",String(selected)
+    );
   });
 
-  $("storeField").classList.toggle("hidden",role==="admin");
+  $("storeField").classList.toggle(
+    "hidden",role==="admin"
+  );
+
   $("loginError").classList.add("hidden");
 
   resetPassword();
 }
 
 function togglePassword(){
-  const visible = $("loginPassword").type==="password";
-  $("loginPassword").type = visible ? "text" : "password";
-  $("passwordToggle").textContent = visible ? "Ocultar" : "Mostrar";
-  $("passwordToggle").setAttribute("aria-pressed",String(visible));
+  const visible=$("loginPassword").type==="password";
+
+  $("loginPassword").type=visible ? "text" : "password";
+
+  $("passwordToggle").textContent=
+    visible ? "Ocultar" : "Mostrar";
+
+  $("passwordToggle").setAttribute(
+    "aria-pressed",String(visible)
+  );
 }
 
 function loginError(message){
-  $("loginError").textContent = message;
+  $("loginError").textContent=message;
   $("loginError").classList.remove("hidden");
 }
 
 async function enterApp(event){
   event.preventDefault();
 
-  const role = $("loginRole").value;
-  const store = $("loginStore").value;
-  const name = $("loginName").value.trim();
+  const role=$("loginRole").value;
+  const store=$("loginStore").value;
+  const name=$("loginName").value.trim();
 
   if(!["admin","encargado"].includes(role)){
     return loginError("Selecciona un perfil válido.");
   }
 
-  if(!name) return loginError("Ingresa tu nombre.");
+  if(!name){
+    return loginError("Ingresa tu nombre.");
+  }
 
-  if(role==="encargado" && !STORES.includes(store)){
+  if(
+    role==="encargado" &&
+    !STORES.includes(store)
+  ){
     return loginError("Selecciona tu tienda.");
   }
 
-  const submit = event.target.querySelector('button[type="submit"]');
-  submit.disabled = true;
+  const submit=event.target.querySelector(
+    'button[type="submit"]'
+  );
+
+  submit.disabled=true;
 
   try{
-    const result = await api("login",{
-      role,store,name,
+    const result=await api("login",{
+      role,
+      store,
+      name,
       password:$("loginPassword").value
     });
 
-    db = result.db;
-    revision = result.revision;
-    session = result.session;
-    authToken = result.token;
+    db=result.db;
+    revision=result.revision;
+    session=result.session;
+    authToken=result.token;
     viewEpoch++;
 
     connection("Conectado a Google");
@@ -1168,37 +1444,57 @@ async function enterApp(event){
     loginError(error.message);
     return;
   }finally{
-    submit.disabled = false;
+    submit.disabled=false;
   }
 
   resetPassword();
+
   $("loginError").classList.add("hidden");
   $("login").classList.add("hidden");
   $("app").classList.remove("hidden");
 
-  $("rolePill").textContent =
+  $("rolePill").textContent=
     role==="admin" ? "ADMINISTRADOR" : "ENCARGADO";
 
   document.querySelectorAll(".adminOnly").forEach(el=>{
-    el.classList.toggle("hidden",role!=="admin");
+    el.classList.toggle(
+      "hidden",role!=="admin"
+    );
   });
 
-  $("attendanceDate").value = today();
-  currentCalendarWeek = weekStart(today());
-  $("payWeek").value = currentCalendarWeek;
+  $("attendanceDate").value=today();
 
-  navigate(role==="admin" ? "dashboard" : "attendance");
+  currentCalendarWeek=weekStart(today());
+  $("payWeek").value=currentCalendarWeek;
+
+  navigate(
+    role==="admin" ? "dashboard" : "attendance"
+  );
 }
 
 function logout(){
-  if(busy) return toast("Espera a que termine el guardado.");
+  if(busy){
+    return toast(
+      "Espera a que termine el guardado."
+    );
+  }
 
   api("logout",{}).catch(()=>{});
 
-  authToken = "";
+  authToken="";
   viewEpoch++;
-  db = {staff:[],attendance:{},notices:[]};
-  session = {role:"",store:"",name:""};
+
+  db={
+    staff:[],
+    attendance:{},
+    notices:[]
+  };
+
+  session={
+    role:"",
+    store:"",
+    name:""
+  };
 
   resetPassword();
   closeStaffForm();
@@ -1211,34 +1507,61 @@ function logout(){
 /* NAVEGACIÓN */
 function navigate(view){
   checkWeeklyRollover();
+
   if(!session.role) return;
 
-  const views = ["attendance","dashboard","staff","reports"];
+  const views=[
+    "attendance",
+    "dashboard",
+    "staff",
+    "reports"
+  ];
 
-  if(!views.includes(view) || session.role!=="admin"){
-    view = "attendance";
+  if(
+    !views.includes(view) ||
+    session.role!=="admin"
+  ){
+    view="attendance";
   }
 
   views.forEach(v=>{
-    $("view-"+v).classList.toggle("hidden",v!==view);
+    $("view-"+v).classList.toggle(
+      "hidden",v!==view
+    );
   });
 
   document.querySelectorAll(".navbtn").forEach(button=>{
-    button.classList.toggle("active",button.dataset.view===view);
+    button.classList.toggle(
+      "active",button.dataset.view===view
+    );
   });
 
-  const titles = {
+  const titles={
     attendance:[
       "Asistencia diaria",
-      session.role==="admin" ? "Todas las tiendas" : session.store
+      session.role==="admin"
+        ? "Todas las tiendas"
+        : session.store
     ],
-    dashboard:["Resumen y pagos semanales","Semana de lunes a domingo"],
-    staff:["Gestión de personal","Altas, cambios y bajas"],
-    reports:["Reportes","Historial de asistencia"]
+    dashboard:[
+      "Resumen y pagos semanales",
+      "Semana de lunes a domingo"
+    ],
+    staff:[
+      "Gestión de personal",
+      "Altas, cambios y bajas"
+    ],
+    reports:[
+      "Reportes",
+      "Historial de asistencia"
+    ]
   };
 
-  $("topTitle").textContent = titles[view][0];
-  $("topSub").textContent = titles[view][1];
+  $("topTitle").textContent=titles[view][0];
+
+  $("topSub").textContent=displayText(
+    titles[view][1]
+  );
 
   if(view==="attendance") renderAttendance();
   if(view==="dashboard") renderDashboard();
@@ -1248,60 +1571,122 @@ function navigate(view){
 
 /* ASISTENCIA */
 function storesVisible(){
-  if(session.role==="admin") return STORES;
-  if(session.role==="encargado") return [session.store];
+  if(session.role==="admin"){
+    return STORES;
+  }
+
+  if(session.role==="encargado"){
+    return [session.store];
+  }
+
   return [];
 }
 
 function getRecord(id,date){
-  return db.attendance[date+"|"+id] || {status:"",comment:""};
+  return db.attendance[date+"|"+id] || {
+    status:"",
+    comment:""
+  };
 }
 
 function canEditAttendance(id){
-  const worker = db.staff.find(s=>s.id===id);
+  const worker=db.staff.find(s=>s.id===id);
 
-  return Boolean(worker && worker.active && (
-    session.role==="admin" ||
-    (session.role==="encargado" && worker.store===session.store)
-  ));
+  return Boolean(
+    worker &&
+    worker.active &&
+    (
+      session.role==="admin" ||
+      (
+        session.role==="encargado" &&
+        worker.store===session.store
+      )
+    )
+  );
+}
+
+function getLateMinutes(record){
+  if(!["full","half","late"].includes(record.status)){
+    return 0;
+  }
+
+  const value=record.lateMinutes!=null
+    ? Number(record.lateMinutes)
+    : Number(record.lateHours || 0)*60;
+
+  const limit=record.status==="half" ? 360 : 660;
+
+  return Number.isFinite(value)
+    ? Math.min(limit,Math.max(0,value))
+    : 0;
 }
 
 function renderAttendance(){
   if(!session.role) return;
 
-  const date = $("attendanceDate").value || today();
-  const stores = storesVisible();
-  const people = db.staff.filter(
-    s=>s.active && stores.includes(s.store)
+  const date=$("attendanceDate").value || today();
+  const stores=storesVisible();
+
+  const people=db.staff.filter(s=>
+    s.active &&
+    stores.includes(s.store)
   );
 
-  const present = people.filter(s=>
-    ["full","half"].includes(getRecord(s.id,date).status)
+  const present=people.filter(s=>
+    ["full","half","late"].includes(
+      getRecord(s.id,date).status
+    )
   ).length;
 
-  const absent = people.filter(s=>
+  const absent=people.filter(s=>
     getRecord(s.id,date).status==="absent"
   ).length;
 
-  const rest = people.filter(s=>
-    ["rest","paidleave"].includes(getRecord(s.id,date).status)
+  const rest=people.filter(s=>
+    ["rest","paidleave"].includes(
+      getRecord(s.id,date).status
+    )
   ).length;
 
-  const pending = people.filter(s=>
+  const pending=people.filter(s=>
     !getRecord(s.id,date).status
   ).length;
 
-  $("attendanceMetrics").innerHTML =
-    metric("Asistencias",present,"Completo o medio turno","green")+
-    metric("Faltas",absent,"Para esta fecha","red")+
-    metric("Desc./permiso",rest,"Pagados","yellow")+
-    metric("Pendientes",pending,"Sin estado registrado");
+  $("attendanceMetrics").innerHTML=
+    metric(
+      "Asistencias",
+      present,
+      "Turnos de 12 h o 6 h",
+      "green"
+    )+
+    metric(
+      "Faltas",
+      absent,
+      "Para esta fecha",
+      "red"
+    )+
+    metric(
+      "Desc./permiso",
+      rest,
+      "Sin pago",
+      "yellow"
+    )+
+    metric(
+      "Pendientes",
+      pending,
+      "Sin estado registrado"
+    );
 
-  $("attendanceTable").innerHTML = stores.map(store=>{
-    const workers = people.filter(s=>s.store===store);
+  $("attendanceTable").innerHTML=stores.map(store=>{
+    const workers=people.filter(s=>
+      s.store===store
+    );
 
-    const title =
-      `<h3 style="font-size:14px;margin:18px 0 8px">${esc(store)}</h3>`;
+    const title=`
+      <h3 style="font-size:14px;margin:18px 0 8px">
+        ${esc(store)}
+      </h3>
+    `;
 
     if(!workers.length){
       return title+
@@ -1310,37 +1695,88 @@ function renderAttendance(){
 
     return title+table(
       [
-        "Trabajador","Cargo","Asistencia","Observación",
+        "Trabajador",
+        "Cargo",
+        "Asistencia y tardanza",
+        "Observación",
         ...(session.role==="admin" ? ["Acciones"] : [])
       ],
+
       workers.map(worker=>{
-        const record = getRecord(worker.id,date);
-        const id = safeId(worker.id);
+        const record=getRecord(worker.id,date);
+        const id=safeId(worker.id);
+
+        const selected=record.status==="late"
+          ? "full"
+          : record.status;
 
         return [
-          `<strong>${esc(worker.first+" "+worker.last)}</strong>
-           <div class="small muted">${esc(worker.code)}</div>`,
+          `<strong>
+            ${esc(worker.first+" "+worker.last)}
+          </strong>
+          <div class="small muted">
+            ${esc(worker.code)}
+          </div>`,
+
           esc(worker.job || "—"),
+
           `<div class="statusbuttons">
-            ${statuses.map(([label,value])=>
-              `<button data-status="${value}"
-                class="${record.status===value ? "chosen" : ""}"
+            ${statuses.map(([label,value])=>`
+              <button
+                data-status="${value}"
+                class="${selected===value ? "chosen" : ""}"
                 onclick="setStatus(decodeURIComponent('${id}'),'${value}')">
                 ${esc(label)}
-              </button>`
-            ).join("")}
-          </div>`,
-          `<input style="width:100%;min-width:120px"
+              </button>
+            `).join("")}
+          </div>
+
+          ${["full","half","late"].includes(record.status) ? `
+            <label class="small" for="late-${id}">
+              Minutos de tardanza
+            </label>
+
+            <div class="rowactions" style="margin-top:6px">
+              <input
+                id="late-${id}"
+                type="number"
+                min="0"
+                max="${record.status==="half" ? 360 : 660}"
+                step="1"
+                style="width:100px"
+                value="${getLateMinutes(record)}"
+                aria-label="Minutos de tardanza de ${esc(worker.first)}">
+
+              <button
+                class="secondary"
+                type="button"
+                onclick="setLateMinutes(decodeURIComponent('${id}'),document.getElementById('late-${id}').value)">
+                Aplicar tardanza
+              </button>
+            </div>
+
+            <div class="small muted">
+              ${getLateMinutes(record)} min guardados.
+              Usa 0 para quitar la tardanza.
+            </div>
+          ` : ""}`,
+
+          `<input
+            style="width:100%;min-width:120px"
             maxlength="1000"
             aria-label="Observación de ${esc(worker.first)}"
             value="${esc(record.comment)}"
             placeholder="Opcional"
             onchange="setComment(decodeURIComponent('${id}'),this.value)">`,
+
           ...(session.role==="admin" ? [
             Object.prototype.hasOwnProperty.call(
-              db.attendance,date+"|"+worker.id
+              db.attendance,
+              date+"|"+worker.id
             )
-              ? `<button class="danger" type="button"
+              ? `<button
+                  class="danger"
+                  type="button"
                   onclick="deleteAttendance(decodeURIComponent('${id}'))">
                   Eliminar asistencia
                 </button>`
@@ -1354,43 +1790,14 @@ function renderAttendance(){
   renderRecentNotices();
 }
 
-async function deleteAttendance(id){
-  if(session.role!=="admin" || !canEditAttendance(id)) return;
-
-  if(busy || loading){
-    return toast("Espera a que termine la sincronización.");
-  }
-
-  const date = $("attendanceDate").value || today();
-  const key = date+"|"+id;
-
-  if(!Object.prototype.hasOwnProperty.call(db.attendance,key)) return;
-
-  const worker = db.staff.find(s=>s.id===id);
-
-  if(!confirm(
-    "¿Eliminar la asistencia de "+worker.first+" "+worker.last+
-    " del "+date+
-    "? Se eliminará también su observación y se recalculará el pago semanal."
-  )) return;
-
-  await saveChange(()=>{
-    delete db.attendance[key];
-  });
-
-  renderAttendance();
-  renderDashboard();
-  renderReports();
-}
-
 async function updateAttendance(id,changes){
   if(!canEditAttendance(id)) return false;
 
-  const date = $("attendanceDate").value || today();
-  const worker = db.staff.find(s=>s.id===id);
+  const date=$("attendanceDate").value || today();
+  const worker=db.staff.find(s=>s.id===id);
 
   return await saveChange(()=>{
-    db.attendance[date+"|"+id] = {
+    db.attendance[date+"|"+id]={
       ...getRecord(id,date),
       ...changes,
       updatedAt:new Date().toISOString(),
@@ -1401,145 +1808,409 @@ async function updateAttendance(id,changes){
 }
 
 async function setStatus(id,status){
-  if(!statuses.some(s=>s[1]===status)) return;
-  await updateAttendance(id,{status});
+  if(!statuses.some(s=>s[1]===status)){
+    return;
+  }
+
+  const record=getRecord(
+    id,
+    $("attendanceDate").value || today()
+  );
+
+  const minutes=["full","half"].includes(status)
+    ? Math.min(
+        status==="half" ? 360 : 660,
+        getLateMinutes(record)
+      )
+    : 0;
+
+  await updateAttendance(id,{
+    status,
+    lateMinutes:minutes,
+    lateHours:minutes/60
+  });
+
   renderAttendance();
 }
 
+async function setLateMinutes(id,value){
+  const record=getRecord(
+    id,
+    $("attendanceDate").value || today()
+  );
+
+  if(!["full","half","late"].includes(record.status)){
+    return toast(
+      "Primero marca asistencia de 12 horas o de 6 horas."
+    );
+  }
+
+  const limit=record.status==="half" ? 360 : 660;
+  const minutes=Number(value);
+
+  if(
+    String(value).trim()==="" ||
+    !Number.isInteger(minutes) ||
+    minutes<0 ||
+    minutes>limit
+  ){
+    return toast(
+      "Ingresa de 0 a "+limit+" minutos enteros."
+    );
+  }
+
+  const saved=await updateAttendance(id,{
+    status:record.status==="late"
+      ? "full"
+      : record.status,
+    lateMinutes:minutes,
+    lateHours:minutes/60
+  });
+
+  renderAttendance();
+  renderDashboard();
+  renderReports();
+
+  if(saved){
+    toast(
+      minutes
+        ? "Tardanza aplicada: "+minutes+" minutos. Pago recalculado."
+        : "Tardanza eliminada. Pago recalculado."
+    );
+  }
+}
+
 async function setComment(id,comment){
-  const saved = await updateAttendance(id,{comment});
-  if(!saved) renderAttendance();
+  const saved=await updateAttendance(id,{comment});
+
+  if(!saved){
+    renderAttendance();
+  }
+}
+
+async function deleteAttendance(id){
+  if(
+    session.role!=="admin" ||
+    !canEditAttendance(id)
+  ){
+    return;
+  }
+
+  if(busy || loading){
+    return toast(
+      "Espera a que termine la sincronización."
+    );
+  }
+
+  const date=$("attendanceDate").value || today();
+  const key=date+"|"+id;
+
+  if(!Object.prototype.hasOwnProperty.call(
+    db.attendance,key
+  )){
+    return;
+  }
+
+  const worker=db.staff.find(s=>s.id===id);
+
+  if(!confirm(
+    "¿Eliminar la asistencia de "+
+    worker.first+" "+worker.last+
+    " del "+date+
+    "? Se recalculará el pago semanal."
+  )){
+    return;
+  }
+
+  await saveChange(()=>{
+    delete db.attendance[key];
+  });
+
+  renderAttendance();
+  renderDashboard();
+  renderReports();
 }
 
 async function saveAttendance(){
   if(!session.role) return;
 
-  const date = $("attendanceDate").value || today();
+  const date=$("attendanceDate").value || today();
 
-  const people = db.staff.filter(
-    s=>s.active && storesVisible().includes(s.store)
+  const people=db.staff.filter(s=>
+    s.active &&
+    storesVisible().includes(s.store)
   );
 
-  const count = people.filter(s=>getRecord(s.id,date).status).length;
+  const count=people.filter(s=>
+    getRecord(s.id,date).status
+  ).length;
 
-  if(!count) return toast("Marca al menos una asistencia.");
+  if(!count){
+    return toast(
+      "Marca al menos una asistencia."
+    );
+  }
 
-  const missing = people.length-count;
+  const missing=people.length-count;
 
   if(!await saveChange(()=>db.notices.unshift({
     id:Date.now().toString(),
     date,
-    store:session.role==="admin" ? "Todas las tiendas" : session.store,
+    store:session.role==="admin"
+      ? "Todas las tiendas"
+      : session.store,
     by:session.name,
     count,
     missing,
     createdAt:new Date().toISOString()
-  }))) return;
+  }))){
+    return;
+  }
 
   renderRecentNotices();
-  toast("Reporte guardado: "+count+" trabajadores · Pendientes: "+missing);
+
+  toast(
+    "Reporte guardado: "+count+
+    " trabajadores · Pendientes: "+missing
+  );
 }
 
 function renderRecentNotices(){
-  const notices = db.notices.filter(n=>
-    session.role==="admin" || n.store===session.store
+  const notices=db.notices.filter(n=>
+    session.role==="admin" ||
+    n.store===session.store
   ).slice(0,6);
 
-  $("noticeCount").textContent = notices.length+" registros";
+  $("noticeCount").textContent=
+    notices.length+" registros";
 
-  $("recentNotices").innerHTML = notices.length
+  $("recentNotices").innerHTML=notices.length
     ? table(
-      ["Fecha","Tienda","Registrado por","Notificados","Pendientes","Hora"],
+      [
+        "Fecha",
+        "Tienda",
+        "Registrado por",
+        "Notificados",
+        "Pendientes",
+        "Hora"
+      ],
       notices.map(n=>[
         esc(n.date),
         esc(n.store),
         esc(n.by),
         esc(n.count),
         esc(n.missing),
-        esc(new Date(n.createdAt).toLocaleTimeString("es-PE",{
-          hour:"2-digit",minute:"2-digit"
-        }))
+        esc(
+          new Date(n.createdAt).toLocaleTimeString(
+            "es-PE",
+            {
+              hour:"2-digit",
+              minute:"2-digit"
+            }
+          )
+        )
       ])
     )
     : '<div class="empty">Todavía no hay reportes guardados.</div>';
 }
 
-/* PAGOS SEMANALES */
+/* CÁLCULO DE PAGOS */
 function calcPay(worker,date){
-  const start = weekStart(date);
-  const end = weekEnd(date);
-  const c = {full:0,half:0,absent:0,rest:0,paidleave:0};
+  const start=weekStart(date);
+  const end=weekEnd(date);
+
+  const c={
+    full:0,
+    half:0,
+    late:0,
+    absent:0,
+    rest:0,
+    paidleave:0
+  };
+
+  /*
+    Se usa el sueldo registrado de cada trabajador.
+    4 semanas y 6 días de trabajo por semana.
+  */
+  const weeklySalary=Number(worker.salary || 0)/4;
+  const dailyRate=weeklySalary/6;
+
+  /*
+    Jornada completa:
+    12 horas de permanencia.
+    1 hora de almuerzo.
+    11 horas efectivas = 660 minutos.
+  */
+  const minuteRate=dailyRate/660;
+
+  let lateMinutes=0;
+  let deduction=0;
 
   Object.entries(db.attendance).forEach(([key,record])=>{
-    const separator = key.lastIndexOf("|");
-    const day = key.slice(0,separator);
-    const id = key.slice(separator+1);
+    const separator=key.lastIndexOf("|");
+    const day=key.slice(0,separator);
+    const id=key.slice(separator+1);
 
     if(
-      id===worker.id &&
-      day>=start &&
-      day<=end &&
-      Object.prototype.hasOwnProperty.call(c,record.status)
+      id!==worker.id ||
+      day<start ||
+      day>end
     ){
-      c[record.status]++;
+      return;
+    }
+
+    /* Compatibilidad con registros antiguos. */
+    const status=record.status==="late"
+      ? "full"
+      : record.status;
+
+    if(!Object.prototype.hasOwnProperty.call(
+      c,status
+    )){
+      return;
+    }
+
+    c[status]++;
+
+    if(["full","half"].includes(status)){
+      const minutes=getLateMinutes(record);
+
+      if(minutes>0){
+        c.late++;
+      }
+
+      lateMinutes+=minutes;
+
+      const shiftPay=dailyRate*(
+        status==="half" ? 0.5 : 1
+      );
+
+      /*
+        El descuento nunca supera el pago del turno.
+      */
+      deduction+=Math.min(
+        shiftPay,
+        minuteRate*minutes
+      );
     }
   });
 
-  const units = c.full+c.half*0.5+c.rest+c.paidleave;
+  const units=c.full+c.half*0.5;
+
+  const base=Math.round(
+    (
+      Math.max(
+        0,
+        dailyRate*units-deduction
+      )+Number.EPSILON
+    )*100
+  )/100;
 
   return {
     c,
     units,
-    base:Math.round(Number(worker.salary || 0)/30*units*100)/100
+    lateMinutes,
+    deduction,
+    weeklySalary,
+    dailyRate,
+    base
   };
 }
 
 function selectedPeople(){
-  const selected = $("dashboardStore").value;
+  const selected=$("dashboardStore").value;
+
   return db.staff.filter(s=>
-    s.active && (selected==="all" || s.store===selected)
+    s.active &&
+    (
+      selected==="all" ||
+      s.store===selected
+    )
   );
 }
 
 function renderDashboard(){
   if(session.role!=="admin") return;
 
-  const start = weekStart($("payWeek").value || today());
-  $("payWeek").value = start;
+  const start=weekStart(
+    $("payWeek").value || today()
+  );
 
-  const people = selectedPeople();
-  const selected = $("dashboardStore").value;
+  $("payWeek").value=start;
 
-  let present=0,absent=0,rest=0,total=0;
+  const people=selectedPeople();
+  const selected=$("dashboardStore").value;
+
+  let present=0;
+  let absent=0;
+  let rest=0;
+  let total=0;
 
   people.forEach(worker=>{
-    const p = calcPay(worker,start);
-    present += p.c.full+p.c.half;
-    absent += p.c.absent;
-    rest += p.c.rest+p.c.paidleave;
-    total += p.base;
+    const p=calcPay(worker,start);
+
+    present+=p.c.full+p.c.half;
+    absent+=p.c.absent;
+    rest+=p.c.rest+p.c.paidleave;
+    total+=p.base;
   });
 
-  $("dashboardMetrics").innerHTML =
-    metric("Asistencias",present,"Completo o medio turno","green")+
-    metric("Faltas",absent,"Durante la semana","red")+
-    metric("Desc./permiso",rest,"Pagados","yellow")+
-    metric("Pago semanal",money(total),start+" al "+weekEnd(start));
+  $("dashboardMetrics").innerHTML=
+    metric(
+      "Asistencias",
+      present,
+      "Turnos de 12 h o 6 h",
+      "green"
+    )+
+    metric(
+      "Faltas",
+      absent,
+      "Durante la semana",
+      "red"
+    )+
+    metric(
+      "Desc./permiso",
+      rest,
+      "Sin pago",
+      "yellow"
+    )+
+    metric(
+      "Pago semanal",
+      money(total),
+      start+" al "+weekEnd(start),
+      "green"
+    );
 
-  $("storeSummary").innerHTML = table(
-    ["Tienda","Personal","Asistencias","Faltas","Desc./permiso","Pago semanal"],
+  $("storeSummary").innerHTML=table(
+    [
+      "Tienda",
+      "Personal",
+      "Asistencias",
+      "Faltas",
+      "Desc./permiso",
+      "Pago semanal"
+    ],
+
     STORES.filter(store=>
-      selected==="all" || selected===store
+      selected==="all" ||
+      selected===store
     ).map(store=>{
-      const workers = people.filter(s=>s.store===store);
-      let a=0,f=0,r=0,pay=0;
+      const workers=people.filter(s=>
+        s.store===store
+      );
+
+      let a=0;
+      let f=0;
+      let r=0;
+      let pay=0;
 
       workers.forEach(worker=>{
-        const p = calcPay(worker,start);
-        a += p.c.full+p.c.half;
-        f += p.c.absent;
-        r += p.c.rest+p.c.paidleave;
-        pay += p.base;
+        const p=calcPay(worker,start);
+
+        a+=p.c.full+p.c.half;
+        f+=p.c.absent;
+        r+=p.c.rest+p.c.paidleave;
+        pay+=p.base;
       });
 
       return [
@@ -1553,28 +2224,49 @@ function renderDashboard(){
     })
   );
 
-  $("payTable").innerHTML = people.length
+  $("payTable").innerHTML=people.length
     ? table(
       [
-        "Tienda","Trabajador","Completo","Medio turno","Faltas",
-        "Descanso","Permiso pagado","Días equiv.",
-        "Sueldo mensual","Pago semanal"
+        "Tienda",
+        "Trabajador",
+        "Turnos de 12 h",
+        "Turnos de 6 h",
+        "Tardanzas",
+        "Minutos de tardanza",
+        "Descuento tardanza",
+        "Faltas",
+        "Descanso",
+        "Permiso (sin pago)",
+        "Días equivalentes trabajados",
+        "Pago semanal"
       ],
+
       people.map(worker=>{
-        const p = calcPay(worker,start);
+        const p=calcPay(worker,start);
 
         return [
           esc(worker.store),
-          `<strong>${esc(worker.first+" "+worker.last)}</strong>
-           <div class="small muted">${esc(worker.code)}</div>`,
+
+          `<strong>
+            ${esc(worker.first+" "+worker.last)}
+          </strong>
+          <div class="small muted">
+            ${esc(worker.code)}
+          </div>`,
+
           numberBadge(p.c.full,"green"),
           numberBadge(p.c.half,"green"),
+          numberBadge(p.c.late,"yellow"),
+          String(p.lateMinutes),
+          money(p.deduction),
           numberBadge(p.c.absent,"red"),
           numberBadge(p.c.rest,"yellow"),
           numberBadge(p.c.paidleave,"yellow"),
           p.units.toFixed(1),
-          money(worker.salary),
-          `<strong>${money(p.base)}</strong>`
+
+          `<strong class="count-green">
+            ${money(p.base)}
+          </strong>`
         ];
       })
     )
@@ -1587,20 +2279,23 @@ function openStaffForm(worker=null){
 
   $("staffFormPanel").classList.remove("hidden");
 
-  $("staffFormTitle").textContent =
-    worker ? "Editar trabajador" : "Agregar trabajador";
+  $("staffFormTitle").textContent=
+    worker
+      ? "Editar trabajador"
+      : "Agregar trabajador";
 
-  $("staffId").value = worker?.id || "";
-  $("staffStore").value = worker?.store || STORES[0];
-  $("staffCode").value = worker?.code || "";
-  $("staffFirst").value = worker?.first || "";
-  $("staffLast").value = worker?.last || "";
-  $("staffDni").value = worker?.dni || "";
-  $("staffRole").value = worker?.job || "";
-  $("staffSalary").value = worker?.salary ?? 1230;
+  $("staffId").value=worker?.id || "";
+  $("staffStore").value=worker?.store || STORES[0];
+  $("staffCode").value=worker?.code || "";
+  $("staffFirst").value=worker?.first || "";
+  $("staffLast").value=worker?.last || "";
+  $("staffDni").value=worker?.dni || "";
+  $("staffRole").value=worker?.job || "";
+  $("staffSalary").value=worker?.salary ?? 1230;
 
   $("staffFormPanel").scrollIntoView({
-    behavior:"smooth",block:"start"
+    behavior:"smooth",
+    block:"start"
   });
 }
 
@@ -1611,16 +2306,24 @@ function closeStaffForm(){
 
 async function saveStaff(event){
   event.preventDefault();
+
   if(session.role!=="admin") return;
 
-  const id = $("staffId").value;
-  const store = $("staffStore").value;
-  const first = $("staffFirst").value.trim().toUpperCase();
-  const last = $("staffLast").value.trim().toUpperCase();
-  const dni = $("staffDni").value.trim();
-  const salary = Number($("staffSalary").value);
+  const id=$("staffId").value;
+  const store=$("staffStore").value;
 
-  let code = $("staffCode").value.trim();
+  const first=$("staffFirst").value
+    .trim()
+    .toUpperCase();
+
+  const last=$("staffLast").value
+    .trim()
+    .toUpperCase();
+
+  const dni=$("staffDni").value.trim();
+  const salary=Number($("staffSalary").value);
+
+  let code=$("staffCode").value.trim();
 
   if(
     !first ||
@@ -1630,40 +2333,73 @@ async function saveStaff(event){
     salary<0 ||
     (dni && !/^\d{8}$/.test(dni))
   ){
-    return toast("Revisa nombres, apellidos, DNI y sueldo.");
+    return toast(
+      "Revisa nombres, apellidos, DNI y sueldo."
+    );
   }
 
   if(!code){
-    const numbers = db.staff.filter(s=>s.store===store).map(s=>
-      parseInt((s.code || "").replace(/\D/g,""),10) || 0
+    const numbers=db.staff.filter(s=>
+      s.store===store
+    ).map(s=>
+      parseInt(
+        (s.code || "").replace(/\D/g,""),
+        10
+      ) || 0
     );
 
-    code = "T"+String(Math.max(0,...numbers)+1).padStart(2,"0");
+    code="T"+String(
+      Math.max(0,...numbers)+1
+    ).padStart(2,"0");
   }
 
   if(db.staff.some(s=>
-    s.active && s.store===store && s.id!==id && s.code===code
+    s.active &&
+    s.store===store &&
+    s.id!==id &&
+    s.code===code
   )){
-    return toast("Ese código ya existe en la tienda.");
+    return toast(
+      "Ese código ya existe en la tienda."
+    );
   }
 
-  const index = id ? db.staff.findIndex(s=>s.id===id) : -1;
+  const index=id
+    ? db.staff.findIndex(s=>s.id===id)
+    : -1;
 
   if(id && index<0){
-    return toast("No se encontró el trabajador.");
+    return toast(
+      "No se encontró el trabajador."
+    );
   }
 
-  const worker = {
-    id:id || "p"+Date.now()+"_"+Math.random().toString(36).slice(2,7),
-    store,code,first,last,dni,salary,
-    job:$("staffRole").value.trim().toUpperCase(),
+  const worker={
+    id:id ||
+      "p"+Date.now()+"_"+
+      Math.random().toString(36).slice(2,7),
+
+    store,
+    code,
+    first,
+    last,
+    dni,
+    salary,
+
+    job:$("staffRole").value
+      .trim()
+      .toUpperCase(),
+
     payType:"Semanal",
     active:true
   };
 
   if(!await saveChange(()=>{
-    if(id) db.staff[index] = worker;
-    else db.staff.push(worker);
+    if(id){
+      db.staff[index]=worker;
+    }else{
+      db.staff.push(worker);
+    }
   })){
     renderStaff();
     return;
@@ -1671,45 +2407,76 @@ async function saveStaff(event){
 
   closeStaffForm();
   renderStaff();
-  toast(id ? "Datos actualizados." : "Trabajador agregado.");
+
+  toast(
+    id
+      ? "Datos actualizados."
+      : "Trabajador agregado."
+  );
 }
 
 function renderStaff(){
   if(session.role!=="admin") return;
 
-  const store = $("staffStoreFilter").value;
-  const q = $("staffSearch").value.trim().toLowerCase();
+  const store=$("staffStoreFilter").value;
 
-  const workers = db.staff.filter(s=>
+  const q=$("staffSearch").value
+    .trim()
+    .toLowerCase();
+
+  const workers=db.staff.filter(s=>
     s.active &&
-    (store==="all" || s.store===store) &&
-    [s.first,s.last,s.code,s.dni,s.job]
-      .join(" ").toLowerCase().includes(q)
+    (
+      store==="all" ||
+      s.store===store
+    ) &&
+    [
+      s.first,
+      s.last,
+      s.code,
+      s.dni,
+      s.job
+    ].join(" ").toLowerCase().includes(q)
   );
 
-  $("staffTable").innerHTML = workers.length
+  $("staffTable").innerHTML=workers.length
     ? table(
       [
-        "Tienda","Código","Trabajador","DNI",
-        "Cargo","Sueldo mensual","Pago","Acciones"
+        "Tienda",
+        "Código",
+        "Trabajador",
+        "DNI",
+        "Cargo",
+        "Sueldo mensual",
+        "Pago",
+        "Acciones"
       ],
+
       workers.map(worker=>{
-        const id = safeId(worker.id);
+        const id=safeId(worker.id);
 
         return [
           esc(worker.store),
           esc(worker.code),
-          `<strong>${esc(worker.first+" "+worker.last)}</strong>`,
+
+          `<strong>
+            ${esc(worker.first+" "+worker.last)}
+          </strong>`,
+
           esc(worker.dni || "—"),
           esc(worker.job || "—"),
           money(worker.salary),
           "Semanal",
+
           `<div class="rowactions">
-            <button class="secondary"
+            <button
+              class="secondary"
               onclick="editStaff(decodeURIComponent('${id}'))">
               Editar
             </button>
-            <button class="danger"
+
+            <button
+              class="danger"
               onclick="removeStaff(decodeURIComponent('${id}'))">
               Retirar
             </button>
@@ -1717,28 +2484,38 @@ function renderStaff(){
         ];
       })
     )
-    : '<div class="empty">No hay trabajadores para este filtro. Usa “Agregar trabajador”.</div>';
+    : '<div class="empty">No hay trabajadores para este filtro.</div>';
 }
 
 function editStaff(id){
   if(session.role!=="admin") return;
 
-  const worker = db.staff.find(s=>s.id===id);
-  if(worker) openStaffForm(worker);
+  const worker=db.staff.find(s=>s.id===id);
+
+  if(worker){
+    openStaffForm(worker);
+  }
 }
 
 async function removeStaff(id){
   if(session.role!=="admin") return;
 
-  const worker = db.staff.find(s=>s.id===id);
+  const worker=db.staff.find(s=>s.id===id);
+
   if(!worker) return;
 
   if(!confirm(
-    "¿Retirar a "+worker.first+" "+worker.last+
+    "¿Retirar a "+
+    worker.first+" "+worker.last+
     "? Su historial se conservará."
-  )) return;
+  )){
+    return;
+  }
 
-  await saveChange(()=>worker.active=false);
+  await saveChange(()=>{
+    worker.active=false;
+  });
+
   renderStaff();
 }
 
@@ -1746,21 +2523,24 @@ async function removeStaff(id){
 function renderReports(){
   if(session.role!=="admin") return;
 
-  const from = $("reportFrom").value;
-  const to = $("reportTo").value;
-  const store = $("reportStore").value;
+  const from=$("reportFrom").value;
+  const to=$("reportTo").value;
+  const store=$("reportStore").value;
 
   if(from && to && from>to){
-    $("reportTable").innerHTML =
+    $("reportTable").innerHTML=
       '<div class="empty">Revisa el orden de las fechas.</div>';
     return;
   }
 
-  const rows = Object.entries(db.attendance)
+  const rows=Object.entries(db.attendance)
     .map(([key,record])=>{
-      const separator = key.lastIndexOf("|");
-      const id = key.slice(separator+1);
-      const worker = db.staff.find(s=>s.id===id);
+      const separator=key.lastIndexOf("|");
+      const id=key.slice(separator+1);
+
+      const worker=db.staff.find(s=>
+        s.id===id
+      );
 
       return {
         ...record,
@@ -1769,35 +2549,75 @@ function renderReports(){
         store:record.store || worker?.store || ""
       };
     })
+
     .filter(r=>
       (!from || r.date>=from) &&
       (!to || r.date<=to) &&
-      (store==="all" || r.store===store)
+      (
+        store==="all" ||
+        r.store===store
+      )
     )
-    .sort((a,b)=>b.date.localeCompare(a.date));
 
-  $("reportTable").innerHTML = rows.length
+    .sort((a,b)=>
+      b.date.localeCompare(a.date)
+    );
+
+  $("reportTable").innerHTML=rows.length
     ? table(
-      ["Fecha","Tienda","Trabajador","Estado","Observación","Registrado por"],
+      [
+        "Fecha",
+        "Tienda",
+        "Trabajador",
+        "Estado",
+        "Observación",
+        "Registrado por"
+      ],
+
       rows.map(record=>{
-        const worker = db.staff.find(s=>s.id===record.id);
+        const worker=db.staff.find(s=>
+          s.id===record.id
+        );
 
-        const label =
-          (statuses.find(s=>s[1]===record.status) || ["Pendiente"])[0];
+        const status=record.status==="late"
+          ? "full"
+          : record.status;
 
-        const color = record.status==="absent"
+        const label=(
+          statuses.find(s=>s[1]===status) ||
+          ["Pendiente"]
+        )[0];
+
+        const minutes=getLateMinutes(record);
+
+        const color=status==="absent"
           ? "no"
-          : ["rest","paidleave"].includes(record.status)
+          : (
+              ["rest","paidleave"].includes(status) ||
+              minutes>0
+            )
             ? "rest"
-            : record.status ? "ok" : "pending";
+            : status
+              ? "ok"
+              : "pending";
 
         return [
           esc(record.date),
           esc(record.store),
-          esc(worker
-            ? worker.first+" "+worker.last
-            : "Personal no encontrado"),
-          `<span class="pill ${color}">${esc(label)}</span>`,
+
+          esc(
+            worker
+              ? worker.first+" "+worker.last
+              : "Personal no encontrado"
+          ),
+
+          `<span class="pill ${color}">
+            ${esc(label)}
+            ${minutes>0
+              ? " · Tardanza: "+minutes+" min"
+              : ""}
+          </span>`,
+
           esc(record.comment || "—"),
           esc(record.by || "—")
         ];
@@ -1810,32 +2630,58 @@ function renderReports(){
 function exportCSV(){
   if(session.role!=="admin") return;
 
-  const start = weekStart($("payWeek").value || today());
-  const end = weekEnd(start);
+  const start=weekStart(
+    $("payWeek").value || today()
+  );
 
-  const rows = [[
-    "Inicio semana","Fin semana","Tienda","Código","Trabajador",
-    "Sueldo mensual","Completo","Medio turno","Faltas",
-    "Descanso","Permiso pagado","Días equivalentes","Pago semanal"
+  const end=weekEnd(start);
+
+  const rows=[[
+    "Inicio semana",
+    "Fin semana",
+    "Tienda",
+    "Código",
+    "Trabajador",
+    "Turnos de 12 h",
+    "Turnos de 6 h",
+    "Tardanzas",
+    "Minutos de tardanza",
+    "Descuento tardanza",
+    "Faltas",
+    "Descanso",
+    "Permiso (sin pago)",
+    "Días equivalentes trabajados",
+    "Pago semanal"
   ]];
 
   selectedPeople().forEach(worker=>{
-    const p = calcPay(worker,start);
+    const p=calcPay(worker,start);
 
     rows.push([
-      start,end,worker.store,worker.code,
+      start,
+      end,
+      displayText(worker.store),
+      worker.code,
       worker.first+" "+worker.last,
-      worker.salary,p.c.full,p.c.half,p.c.absent,
-      p.c.rest,p.c.paidleave,p.units.toFixed(1),p.base.toFixed(2)
+      p.c.full,
+      p.c.half,
+      p.c.late,
+      String(p.lateMinutes),
+      p.deduction.toFixed(2),
+      p.c.absent,
+      p.c.rest,
+      p.c.paidleave,
+      p.units.toFixed(1),
+      p.base.toFixed(2)
     ]);
   });
 
-  const csv = rows.map(row=>
+  const csv=rows.map(row=>
     row.map(value=>{
-      let text = String(value ?? "");
+      let text=String(value ?? "");
 
       if(/^[=+@\t\r-]/.test(text)){
-        text = "'"+text;
+        text="'"+text;
       }
 
       return '"'+text.replace(/"/g,'""')+'"';
@@ -1851,27 +2697,43 @@ function exportCSV(){
 
 /* INICIALIZACIÓN */
 [
-  "loginStore","dashboardStore",
-  "staffStoreFilter","staffStore","reportStore"
+  "loginStore",
+  "dashboardStore",
+  "staffStoreFilter",
+  "staffStore",
+  "reportStore"
 ].forEach(id=>{
-  const select = $(id);
+  const select=$(id);
 
-  if(["dashboardStore","staffStoreFilter","reportStore"].includes(id)){
-    select.add(new Option("Todas las tiendas","all"));
+  if([
+    "dashboardStore",
+    "staffStoreFilter",
+    "reportStore"
+  ].includes(id)){
+    select.add(
+      new Option("Todas las tiendas","all")
+    );
   }
 
   STORES.forEach(store=>{
-    select.add(new Option(store,store));
+    select.add(
+      new Option(
+        displayText(store),
+        store
+      )
+    );
   });
 });
 
 $("loginPassword").addEventListener("keyup",event=>{
   $("capsWarning").classList.toggle(
-    "hidden",!event.getModifierState("CapsLock")
+    "hidden",
+    !event.getModifierState("CapsLock")
   );
 });
 
 setInterval(checkWeeklyRollover,1000);
+setInterval(()=>refresh(),15000);
 
 document.addEventListener("visibilitychange",()=>{
   if(!document.hidden){
@@ -1880,12 +2742,11 @@ document.addEventListener("visibilitychange",()=>{
   }
 });
 
-setInterval(()=>refresh(),15000);
-
-window.addEventListener("focus",()=>refresh());
+window.addEventListener("focus",()=>{
+  refresh();
+});
 
 chooseRole("encargado");
 </script>
-
 </body>
 </html>

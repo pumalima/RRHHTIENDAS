@@ -438,6 +438,22 @@ tr:last-child td{border-bottom:0}
 }
 .total-asistencia strong{font-size:30px;white-space:nowrap}
 
+/* ADELANTOS */
+.adelanto-control{
+  margin-top:12px;
+  padding:12px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:10px;
+  white-space:normal;
+}
+.adelanto-control label{
+  display:block;
+  color:#9a3412;
+  margin-bottom:7px;
+}
+.adelanto-control input{width:130px}
+
 /* FERIADOS */
 .feriado-control{
   margin-top:12px;
@@ -571,7 +587,6 @@ tr:last-child td{border-bottom:0}
 <div id="login" class="login-layout">
   <div class="login-intro">
     <span class="login-tag">GESTIÓN DE PERSONAL</span>
-
     <h1>Tu equipo.<br><span>Todo bajo control.</span></h1>
 
     <p>
@@ -642,7 +657,6 @@ tr:last-child td{border-bottom:0}
 
       <div class="field">
         <label for="loginPassword">Contraseña</label>
-
         <div class="password-wrap">
           <input
             type="password"
@@ -674,8 +688,7 @@ tr:last-child td{border-bottom:0}
 
     <p class="footerhint">
       Datos compartidos mediante Google.
-      Actualización automática cada 15 segundos mientras el panel
-      está abierto.
+      Actualización automática cada 15 segundos mientras el panel está abierto.
     </p>
   </div>
 </div>
@@ -895,8 +908,10 @@ tr:last-child td{border-bottom:0}
             Turno completo = 1 día; medio turno = 0,5 días.
             Descansos, faltas y permisos no generan pago de jornada.
             <br>
-            Las tardanzas descuentan y los minutos extras suman.
-            El feriado se registra como importe adicional manual en soles.
+            Las tardanzas y los adelantos descuentan;
+            los minutos extras suman.
+            Marca Feriado para sumar automáticamente otro pago de la jornada:
+            S/ 50 + S/ 50 = S/ 100.
             <br>
             Tarifa por minuto:
             sueldo mensual ÷ 4 ÷ 6 ÷ 660.
@@ -1206,7 +1221,6 @@ function today(){
   }).formatToParts(new Date());
 
   const part = type => parts.find(p => p.type === type).value;
-
   return part("year")+"-"+part("month")+"-"+part("day");
 }
 
@@ -1829,10 +1843,27 @@ function getExtraMinutes(record){
     : 0;
 }
 
-function getHolidayAmount(record){
-  if(!record.status || !record.isHoliday) return 0;
+/* ADELANTO REGISTRADO EN LA FECHA */
+function getAdvanceAmount(record){
+  const amount = Number(record.advanceAmount || 0);
 
-  const amount = Number(record.holidayAmount || 0);
+  return Number.isFinite(amount) && amount >= 0
+    ? Math.round((amount+Number.EPSILON)*100)/100
+    : 0;
+}
+
+/* FERIADO: AGREGA OTRO PAGO DE LA JORNADA */
+function getHolidayAmount(record,worker){
+  if(
+    !record.isHoliday ||
+    !["full","half","late"].includes(record.status)
+  ){
+    return 0;
+  }
+
+  // Misma tarifa del sistema: sueldo mensual / 4 semanas / 6 días.
+  const dailyRate = Number(worker?.salary || 0)/4/6;
+  const amount = dailyRate*(record.status === "half" ? 0.5 : 1);
 
   return Number.isFinite(amount) && amount >= 0
     ? Math.round((amount+Number.EPSILON)*100)/100
@@ -1914,6 +1945,10 @@ function crearCuadroSemanal(personal,fecha,editable=false){
       const contenido = `
         ${etiqueta}
 
+        ${getAdvanceAmount(registro) > 0
+          ? `<small>Adelanto: −${money(getAdvanceAmount(registro))}</small>`
+          : ""}
+
         ${estado === "half" ? "<small>6 h</small>" : ""}
 
         ${getLateMinutes(registro)
@@ -1926,7 +1961,7 @@ function crearCuadroSemanal(personal,fecha,editable=false){
 
         ${registro.isHoliday
           ? `<small class="feriado-etiqueta">
-               Feriado +${money(getHolidayAmount(registro))}
+               Feriado +${money(getHolidayAmount(registro,trabajador))}
              </small>`
           : ""}
       `;
@@ -1966,6 +2001,10 @@ function crearCuadroSemanal(personal,fecha,editable=false){
           <small>Descuento: −${money(pago.deduction)}</small>
           <small>Extras: +${money(pago.extraPay)}</small>
           <small>Feriados: +${money(pago.holidayPay)}</small>
+          <small>Adelantos: −${money(pago.advancePay)}</small>
+          ${pago.base < 0
+            ? "<small>Saldo negativo: adelantos pendientes de compensar.</small>"
+            : ""}
         </td>
       </tr>
     `;
@@ -2015,7 +2054,7 @@ function crearCuadroSemanal(personal,fecha,editable=false){
           ${inicio} al ${weekEnd(inicio)}
           <br>
           Suma de pagos semanales, con descuentos,
-          extras y feriados incluidos.
+          extras, feriados y adelantos incluidos.
         </small>
       </div>
 
@@ -2182,51 +2221,60 @@ function renderAttendance(){
               </div>
             ` : ""}
 
+            <div class="adelanto-control">
+              <label for="advance-${id}">Adelanto (S/)</label>
+
+              <div class="rowactions">
+                <input
+                  id="advance-${id}"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="${getAdvanceAmount(record).toFixed(2)}"
+                  aria-label="Adelanto de ${esc(worker.first)}">
+
+                <button
+                  type="button"
+                  class="secondary"
+                  onclick="setAdvance(
+                    decodeURIComponent('${id}'),
+                    document.getElementById('advance-${id}').value
+                  )">
+                  Guardar adelanto
+                </button>
+              </div>
+
+              <div class="small muted">
+                Guardado: ${money(getAdvanceAmount(record))}.
+                Ingresa el total adelantado en esta fecha;
+                reemplaza el importe anterior.
+                Se descuenta del pago semanal. Usa 0 para retirarlo.
+              </div>
+            </div>
+
             <div class="feriado-control">
               <label>
                 <input
                   type="checkbox"
                   id="holiday-${id}"
                   ${record.isHoliday ? "checked" : ""}
-                  onchange="document.getElementById(
-                    'holiday-amount-${id}'
-                  ).disabled=!this.checked">
-                Feriado
-              </label>
-
-              <label class="small" for="holiday-amount-${id}">
-                Importe adicional por feriado (S/)
-              </label>
-
-              <div class="rowactions">
-                <input
-                  id="holiday-amount-${id}"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  value="${getHolidayAmount(record).toFixed(2)}"
-                  ${record.isHoliday ? "" : "disabled"}
-                  style="width:130px">
-
-                <button
-                  type="button"
-                  class="secondary"
-                  onclick="setHoliday(
+                  ${busy || loading ? "disabled" : ""}
+                  onchange="setHoliday(
                     decodeURIComponent('${id}'),
-                    document.getElementById('holiday-${id}').checked,
-                    document.getElementById('holiday-amount-${id}').value
+                    this.checked
                   )">
-                  Guardar feriado
-                </button>
-              </div>
+                Feriado: pago doble
+              </label>
 
               <div class="small muted">
                 ${record.isHoliday
-                  ? "Feriado guardado: +"+money(getHolidayAmount(record))
-                  : "Sin feriado registrado"}
+                  ? "Adicional por feriado: +"+
+                    money(getHolidayAmount(record,worker))
+                  : "Marca el check para sumar otro pago de la jornada."}
                 <br>
-                Se suma al pago del día y al total semanal.
-                Desmarca y guarda para retirarlo.
+                Se guarda automáticamente. Desmarca para retirar el adicional.
+                Medio turno: adicional proporcional.
+                Tardanzas y extras se calculan aparte.
               </div>
             </div>
           `,
@@ -2301,6 +2349,10 @@ async function setStatus(id,status){
 
   await updateAttendance(id,{
     status,
+    holidayAmount:getHolidayAmount(
+      {...record,status},
+      db.staff.find(person=>person.id === id)
+    ),
     lateMinutes:minutes,
     lateHours:minutes/60,
     extraMinutes:["full","half"].includes(status)
@@ -2392,29 +2444,62 @@ async function setExtraMinutes(id,value){
   }
 }
 
-async function setHoliday(id,marcado,valor){
-  const fecha = $("attendanceDate").value || today();
-  const registro = getRecord(id,fecha);
-
-  if(!registro.status){
-    return toast("Primero selecciona el estado de asistencia de este día.");
-  }
-
-  const texto = String(valor).trim();
-  const importe = marcado ? Number(texto) : 0;
+/* GUARDAR O CORREGIR ADELANTO */
+async function setAdvance(id,value){
+  const text = String(value).trim();
+  const amount = Number(text);
 
   if(
-    marcado &&
-    (
-      !/^\d+(?:\.\d{1,2})?$/.test(texto) ||
-      !Number.isFinite(importe) ||
-      importe < 0
-    )
+    !/^\d+(?:\.\d{1,2})?$/.test(text) ||
+    !Number.isFinite(amount) ||
+    amount < 0
   ){
-    return toast("Ingresa un importe válido en soles, con hasta 2 decimales.");
+    return toast("Ingresa un adelanto válido, con hasta 2 decimales.");
   }
 
-  const monto = Math.round((importe+Number.EPSILON)*100)/100;
+  const date = $("attendanceDate").value || today();
+  const advanceAmount =
+    Math.round((amount+Number.EPSILON)*100)/100;
+
+  const saved = await updateAttendance(id,{advanceAmount});
+
+  renderAttendance();
+  renderDashboard();
+  renderReports();
+
+  if(saved){
+    toast(getAdvanceAmount(getRecord(id,date)) === advanceAmount
+      ? (
+          advanceAmount > 0
+            ? "Adelanto guardado: "+money(advanceAmount)+
+              ". Descontado del pago semanal."
+            : "Adelanto retirado. Pago semanal recalculado."
+        )
+      : "Google no conservó el adelanto. Apps Script debe guardar advanceAmount."
+    );
+  }
+}
+
+/* CHECK DE FERIADO CON GUARDADO AUTOMÁTICO */
+async function setHoliday(id,marcado){
+  const fecha = $("attendanceDate").value || today();
+  const registro = getRecord(id,fecha);
+  const worker = db.staff.find(person=>person.id === id);
+
+  if(busy || loading){
+    renderAttendance();
+    return toast("Espera a que termine la sincronización.");
+  }
+
+  if(marcado && !["full","half","late"].includes(registro.status)){
+    renderAttendance();
+    return toast("Primero marca Asistió o Medio turno.");
+  }
+
+  const monto = getHolidayAmount(
+    {...registro,isHoliday:Boolean(marcado)},
+    worker
+  );
 
   const guardado = await updateAttendance(id,{
     isHoliday:Boolean(marcado),
@@ -2429,11 +2514,15 @@ async function setHoliday(id,marcado,valor){
     const confirmado = getRecord(id,fecha);
 
     const correcto =
-      Boolean(confirmado.isHoliday) === Boolean(marcado) &&
-      getHolidayAmount(confirmado) === monto;
+      Boolean(confirmado.isHoliday) === Boolean(marcado);
 
     toast(correcto
-      ? "Feriado guardado. Pago semanal recalculado."
+      ? (
+          marcado
+            ? "Feriado guardado: +"+money(monto)+
+              ". Pago semanal recalculado."
+            : "Feriado desmarcado. Adicional retirado."
+        )
       : "Google no conservó el feriado. Apps Script debe guardar isHoliday y holidayAmount."
     );
   }
@@ -2468,7 +2557,8 @@ async function deleteAttendance(id){
   if(!confirm(
     "¿Eliminar la asistencia de "+
     worker.first+" "+worker.last+" del "+date+
-    "? Se recalculará el pago semanal."
+    "? También se eliminará el adelanto registrado en esa fecha "+
+    "y se recalculará el pago semanal."
   )){
     return;
   }
@@ -2536,6 +2626,7 @@ function renderRecentNotices(){
           "Fecha","Tienda","Registrado por",
           "Notificados","Pendientes","Hora"
         ],
+
         notices.map(notice=>[
           esc(notice.date),
           esc(notice.store),
@@ -2581,6 +2672,7 @@ function calcPay(worker,date){
   let lateMinutes = 0;
   let extraMinutes = 0;
   let holidayPay = 0;
+  let advancePay = 0;
   let holidayDays = 0;
   let deduction = 0;
 
@@ -2593,6 +2685,9 @@ function calcPay(worker,date){
       return;
     }
 
+    // Los adelantos cuentan aunque aún no se haya marcado asistencia.
+    advancePay += getAdvanceAmount(record);
+
     const status = record.status === "late"
       ? "full"
       : record.status;
@@ -2603,9 +2698,10 @@ function calcPay(worker,date){
 
     c[status]++;
 
-    holidayPay += getHolidayAmount(record);
+    // El feriado agrega otro pago de la jornada.
+    holidayPay += getHolidayAmount(record,worker);
 
-    if(record.isHoliday){
+    if(record.isHoliday && ["full","half"].includes(status)){
       holidayDays++;
     }
 
@@ -2632,11 +2728,13 @@ function calcPay(worker,date){
   const units = c.full+c.half*0.5;
   const extraPay = extraMinutes*minuteRate;
 
+  // Pago semanal = asistencia - tardanzas + extras + feriados - adelantos.
   const base = Math.round(
     (
       Math.max(0,dailyRate*units-deduction)+
       extraPay+
-      holidayPay+
+      holidayPay-
+      advancePay+
       Number.EPSILON
     )*100
   )/100;
@@ -2648,6 +2746,7 @@ function calcPay(worker,date){
     extraMinutes,
     extraPay,
     holidayPay,
+    advancePay,
     holidayDays,
     deduction,
     weeklySalary,
@@ -3006,6 +3105,7 @@ function renderReports(){
           "Minutos extras",
           "Feriado",
           "Pago adicional feriado",
+          "Adelanto",
           "Observación",
           "Registrado por"
         ],
@@ -3057,7 +3157,8 @@ function renderReports(){
 
             String(getExtraMinutes(record)),
             record.isHoliday ? "Sí" : "No",
-            money(getHolidayAmount(record)),
+            money(getHolidayAmount(record,worker)),
+            money(getAdvanceAmount(record)),
             esc(record.comment || "—"),
             esc(record.by || "—")
           ];
@@ -3091,6 +3192,7 @@ function exportCSV(){
     "Pago extras",
     "Feriados",
     "Pago feriados",
+    "Adelantos descontados",
     "Faltas",
     "Descanso",
     "Permiso (sin pago)",
@@ -3116,6 +3218,7 @@ function exportCSV(){
       payment.extraPay.toFixed(2),
       payment.holidayDays,
       payment.holidayPay.toFixed(2),
+      payment.advancePay.toFixed(2),
       payment.c.absent,
       payment.c.rest,
       payment.c.paidleave,
